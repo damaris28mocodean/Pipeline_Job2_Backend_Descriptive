@@ -72,7 +72,7 @@ pipeline{
         
         dir('Artifacts'){
             
-            sh "docker build --build-arg ARTIFACT_NAME=${ARTIFACT} --build-arg PORT_NUMBER=${PORT} --tag ${IMAGE_NAME}:${BUILD_NUMBER} ."
+            sh "docker build --build-arg ARTIFACT_NAME=${ARTIFACT} --build-arg PORT_NUMBER=8080 --tag ${IMAGE_NAME}:${BUILD_NUMBER} ."
           
         }
         
