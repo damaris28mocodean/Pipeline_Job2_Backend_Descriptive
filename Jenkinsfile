@@ -4,7 +4,7 @@ pipeline{
   stages{
     stage ('Create Artifacts'){
       steps{
-        sh "mkdir Artifacts"
+        sh "echo Sunt minunata"
       }
     }
   }
