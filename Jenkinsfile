@@ -53,7 +53,7 @@ pipeline{
        
      }
     
-     stage('Preparation'){
+     /*stage('Preparation'){
         
       steps{
         
@@ -64,7 +64,7 @@ pipeline{
         
       }
       
-    }
+    }*/
     
     stage('Build'){
       
