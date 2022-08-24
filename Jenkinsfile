@@ -1,9 +1,15 @@
 pipeline{
   
-   agent {
-  label 'master'
+  agent {
+
+      label 'master'
   }
   
+  environment {
+
+		    DOCKERHUB_CREDENTIALS=credentials('access-token-docker')
+	}
+
   stages{
     
      stage ('Setup parameters'){
@@ -55,7 +61,7 @@ pipeline{
        
      }
     
-     stage('Preparation'){
+     /*stage('Preparation'){
         
       steps{
         
@@ -66,7 +72,7 @@ pipeline{
         
       }
       
-    }
+    }*/
     
     stage('Build'){
       
@@ -81,16 +87,41 @@ pipeline{
       }
       
     }
+
+    stage('Login') {
+
+        steps {
+          sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+        }
+
+		}
+
+    stage('Push') {
+
+        steps {
+          sh "docker push ${IMAGE_NAME}:${BUILD_NUMBER}"
+        }
+		}
     
-    stage('Deploy'){
+    /*stage('Deploy'){
       steps{
         
           sh "docker run --name ${CONTAINER_NAME} -d -p ${PORT}:8080 ${IMAGE_NAME}:${BUILD_NUMBER}"
         
       }
       
-    }
+    }*/
     
   }
+
+  post {
+
+      always {
+
+          sh "docker logout"
+
+      }
+
+	}
   
 }
