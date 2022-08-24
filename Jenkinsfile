@@ -14,7 +14,7 @@ pipeline{
             
             properties([
                       parameters([  
-                        string(defaultValue: 'backend_img', name: 'IMAGE_NAME', description: ''),
+                        string(defaultValue: 'damy28/backend_repo', name: 'IMAGE_NAME', description: ''),
                         string(defaultValue: 'backend_cont', name: 'CONTAINER_NAME', description: ''),
                         [$class: 'ChoiceParameter', 
                                                 choiceType: 'PT_SINGLE_SELECT', 
