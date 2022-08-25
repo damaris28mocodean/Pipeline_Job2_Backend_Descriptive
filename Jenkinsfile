@@ -74,19 +74,6 @@ pipeline{
       
     }*/
     
-    stage('Download the Artifacts'){
-      
-      steps{
-        
-        dir('Artifacts'){
-            
-            sh "jf rt dl Artifactory/*.jar"
-          
-        }
-        
-      }
-      
-    }
 
     stage('Build'){
       
