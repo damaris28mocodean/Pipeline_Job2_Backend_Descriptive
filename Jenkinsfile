@@ -104,14 +104,14 @@ pipeline{
         }
 		}
     
-    /*stage('Deploy'){
+    stage('Deploy'){
       steps{
         
           sh "docker run --name ${CONTAINER_NAME} -d -p ${PORT}:8080 ${IMAGE_NAME}:${BUILD_NUMBER}"
         
       }
       
-    }*/
+    }
     
   }
 
