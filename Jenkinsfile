@@ -107,7 +107,7 @@ pipeline{
     stage('Deploy'){
       steps{
         
-          sh "docker run --name ${CONTAINER_NAME} -d -p ${PORT}:8080 ${IMAGE_NAME}:${BUILD_NUMBER}"
+          sh "ssh damy2@192.168.152.131 'docker run --name ${CONTAINER_NAME} -d -p ${PORT}:8080 ${IMAGE_NAME}:${BUILD_NUMBER}'"
         
       }
       
