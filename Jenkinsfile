@@ -22,6 +22,8 @@ pipeline{
                       parameters([  
                         string(defaultValue: 'damy28/backend_repo', name: 'IMAGE_NAME', description: ''),
                         string(defaultValue: 'backend_cont', name: 'CONTAINER_NAME', description: ''),
+                        string(defaultValue: 'damy2', name: 'REMOTE_SERVER_USER', description: ''),
+                        string(defaultValue: '192.168.152.131', name: 'REMOTE_SERVER_IP', description: ''),
                         [$class: 'ChoiceParameter', 
                                                 choiceType: 'PT_SINGLE_SELECT', 
                                                 description: '', 
@@ -107,7 +109,7 @@ pipeline{
     stage('Deploy'){
       steps{
         
-          sh "ssh damy2@192.168.152.131 'docker run --name ${CONTAINER_NAME} -d -p ${PORT}:8080 ${IMAGE_NAME}:${BUILD_NUMBER}'"
+          sh "ssh ${REMOTE_SERVER_USER}@${REMOTE_SERVER_IP} 'docker run --name ${CONTAINER_NAME} -d -p ${PORT}:8080 ${IMAGE_NAME}:${BUILD_NUMBER}'"
         
       }
       
