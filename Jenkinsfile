@@ -50,7 +50,7 @@ pipeline{
                                                     ]
                                                 ]
                                             ],
-                        choice(choices: ['8083', '8084'], name: 'PORT')
+                        choice(choices: ['8080','8081','8082','8083', '8084'], name: 'PORT')
                       ])
                   ])
             
